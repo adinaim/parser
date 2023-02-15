@@ -57,7 +57,6 @@ def parsing() -> list:
         cards = get_cards_from_html(html)
         apt = get_card(cards)
         apts.extend(apt)
-    print('Ваша БД заполнена!')
     return apts
 
 
@@ -66,7 +65,7 @@ def parse_into_db():
     apts = parsing()
     with db.atomic():
         Appartment.insert_many(apts).execute()
-    print('Ваша БД заполнена!')
+    print('Готово!')
 
 if __name__ == '__main__':
     parse_into_db()
